@@ -27,6 +27,7 @@ async function bootstrap() {
 
   appConfig.setGlobalPrefix('api', excludeOpts);
   appConfig.useGlobalInterceptors(new LoggerInterceptor());
+  appConfig.useGlobalFilters(new HttpExceptionFilter());
 
   await appConfig.listen(3000);
 }

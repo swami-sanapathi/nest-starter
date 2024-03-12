@@ -11,4 +11,10 @@ export class TrendsService {
     this.trends.push(trend);
     return this.trends;
   }
+
+  shouldThrowUnauthorizedException(): void {
+    throw new UnauthorizedException(
+      'You are not authorized to perform this operation'
+    );
+  }
 }

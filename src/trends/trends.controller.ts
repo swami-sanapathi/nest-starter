@@ -26,4 +26,9 @@ export class TrendsController {
       data: latestTrends
     });
   }
+
+  @Get('/unauthorized')
+  shouldThrowUnauthorizedException() {
+    this.trendsService.shouldThrowUnauthorizedException();
+  }
 }
