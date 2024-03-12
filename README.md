@@ -79,3 +79,4 @@ Nest is [MIT licensed](LICENSE).
 - [ ] Add middleware for request encryption
 - [ ] Add middleware for request decryption
 - [ ] Add middleware for request sanitization
+- [ ] Add swagger documentation
