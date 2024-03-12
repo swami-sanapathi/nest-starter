@@ -66,10 +66,11 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 
 Nest is [MIT licensed](LICENSE).
 
+## Done
+- [x] Add middleware for logging - branch: interceptors
+- [x] Add middleware for error handling - branch: filters
 
 ## TODO
-- [ ] Add middleware for logging
-- [ ] Add middleware for error handling
 - [ ] Add middleware for request validation
 - [ ] Add middleware for request authentication
 - [ ] Add middleware for request authorization
