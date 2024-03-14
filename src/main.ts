@@ -1,12 +1,12 @@
-import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
 import { RequestMethod } from '@nestjs/common';
 import {
   GlobalPrefixOptions,
   NestApplicationOptions
 } from '@nestjs/common/interfaces';
-import { LoggerInterceptor } from './core/interceptors/logger.interceptor';
+import { NestFactory } from '@nestjs/core';
+import { AppModule } from './app.module';
 import { HttpExceptionFilter } from './core/filters/http-exception.filter';
+import { LoggerInterceptor } from './core/interceptors/logger.interceptor';
 
 async function bootstrap() {
   const appOpts: NestApplicationOptions = {
@@ -29,6 +29,6 @@ async function bootstrap() {
   appConfig.useGlobalInterceptors(new LoggerInterceptor());
   appConfig.useGlobalFilters(new HttpExceptionFilter());
 
-  await appConfig.listen(3000);
+  await appConfig.listen(3001);
 }
 bootstrap();

@@ -1,5 +1,16 @@
-import { Controller, Get, HttpCode, Post, Req, Res } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  HttpCode,
+  Post,
+  Req,
+  Res,
+  ValidationPipe
+} from '@nestjs/common';
 import { Request, Response } from 'express';
+import { getCurrentDate } from 'src/utils/date-fns';
+import { AddTrendsDto, UpdateTrendsDto } from './trends.dto';
 import { TrendsService } from './trends.service';
 
 @Controller('/trends')
@@ -10,21 +21,30 @@ export class TrendsController {
     console.log('Trends api call');
     const trends = this.trendsService.getTrends();
 
-    return res.send({
-      message: 'Trends fetched successfully.',
-      data: trends
-    });
+    return res.send({ data: trends });
   }
 
   @Post()
   @HttpCode(201)
-  addTrend(@Req() req: Request, @Res() res: Response) {
-    const trend = req.body.trend;
-    const latestTrends = this.trendsService.addTrend(trend);
-    return res.send({
-      message: 'Trend added successfully.',
-      data: latestTrends
-    });
+  addTrend(
+    @Body(ValidationPipe) trendsDto: AddTrendsDto,
+    @Res() res: Response
+  ) {
+    trendsDto.id = this.trendsService.getTrends().length + 1;
+    trendsDto.createdAt = getCurrentDate();
+    trendsDto.updatedAt = getCurrentDate();
+    const latestTrends = this.trendsService.addTrend(trendsDto);
+    return res.send({ data: latestTrends });
+  }
+
+  @Post('/update')
+  updateTrend(
+    @Body(ValidationPipe) updateTrendsDto: UpdateTrendsDto,
+    @Res() res: Response
+  ) {
+    updateTrendsDto.updatedAt = getCurrentDate();
+    const latestTrends = this.trendsService.updateTrend(updateTrendsDto);
+    return res.send({ data: latestTrends });
   }
 
   @Get('/unauthorized')

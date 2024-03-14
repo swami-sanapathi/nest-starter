@@ -69,9 +69,10 @@ Nest is [MIT licensed](LICENSE).
 ## Done
 - [x] Add middleware for logging - branch: interceptors
 - [x] Add middleware for error handling - branch: filters
+- [x] Add middleware for request validation
 
 ## TODO
-- [ ] Add middleware for request validation
+- [ ] Add swagger documentation
 - [ ] Add middleware for request authentication
 - [ ] Add middleware for request authorization
 - [ ] Add middleware for request rate limiting
@@ -80,4 +81,3 @@ Nest is [MIT licensed](LICENSE).
 - [ ] Add middleware for request encryption
 - [ ] Add middleware for request decryption
 - [ ] Add middleware for request sanitization
-- [ ] Add swagger documentation
