@@ -4,6 +4,7 @@ import {
   NestApplicationOptions
 } from '@nestjs/common/interfaces';
 import { NestFactory } from '@nestjs/core';
+import * as compression from 'compression';
 import { AppModule } from './app.module';
 import { HttpExceptionFilter } from './core/filters/http-exception.filter';
 import { LoggerInterceptor } from './core/interceptors/logger.interceptor';
@@ -28,6 +29,7 @@ async function bootstrap() {
   appConfig.setGlobalPrefix('api', excludeOpts);
   appConfig.useGlobalInterceptors(new LoggerInterceptor());
   appConfig.useGlobalFilters(new HttpExceptionFilter());
+  appConfig.use(compression());
 
   await appConfig.listen(3001);
 }
